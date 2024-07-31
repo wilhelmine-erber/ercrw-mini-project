@@ -24,6 +24,20 @@ export async function getTodos(){
 
 
 // getTodo
+
+export async function getTodo(id: string){
+    try{
+        const res = await fetch(`${BASE_URL}/todo/${id}`)
+        const result = await res.json()
+        return result
+
+    }catch(error){
+        console.error(error)
+        return undefined
+    }
+}
+
+
 // createTodo
 
 export async function createTodo(todo: Omit<ITodo, '_id'>){

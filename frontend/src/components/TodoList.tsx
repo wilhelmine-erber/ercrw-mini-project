@@ -36,7 +36,7 @@ function TodoList() {
 
         <div className='mt-10'>
             {todos.map((todo) => (
-                <TodoItem {...todo} />
+                <TodoItem key={todo._id} {...todo} />
             ))}
         </div>
     </div>

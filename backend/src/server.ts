@@ -30,6 +30,16 @@ app.get('/todo', async (req, res, next)=>{
     }
 })
 
+app.get('/todo/:id', async (req, res, next)=>{
+    try{
+        const todo = await Todo.findOne({_id: req.params.id})
+        res.json(todo)
+
+    }catch(error){
+        next(error)
+    }
+})
+
 
 app.post('/todo', async (req, res, next)=>{
     try{
