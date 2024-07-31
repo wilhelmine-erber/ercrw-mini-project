@@ -1,4 +1,4 @@
-import {ITodo} from '../services/todo'
+import {ITodo, getTodos, createTodo} from '../services/todo'
 import {FormEvent, useEffect, useState} from 'react'
 import TodoItem from './TodoItem'
 
@@ -8,13 +8,18 @@ function TodoList() {
     const [task, setTask] = useState('')
 
     useEffect(()=>{
-
+        getTodos().then((result) => setTodos(result))
     }, [])
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
-
+        createTodo({title: task}).then((result) => {
+            if(result){
+                setTodos((prev)=>[result, ...prev])
+               
+            }
+            // setTask('') ---> funktioniert noch nicht 2-way-binding?
+        })
     }
 
   return (
