@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { NextFunction } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import {connect} from './db'
@@ -50,6 +50,35 @@ app.post('/todo', async (req, res, next)=>{
         next(error)
     }
 })
+
+
+app.put('/todo/:id', async(req, res, next)=>{
+    try{
+        const id = req.params.id
+        const result = await Todo.findByIdAndUpdate({_id:id}, req.body, {runValidators: true, new: true})
+        res.json(result)
+
+    }catch(error){
+        next(error)
+    }
+})
+
+
+app.delete('/todo/:id', async(req, res, next) => {
+    try{
+        const id= req.params.id
+        await Todo.deleteOne({_id:id})
+        res.sendStatus(204)
+
+    }catch(error){
+        next(error)
+    }
+})
+
+// app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+//     console.error(err)
+//     res.status(500).send("error")
+//   });
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server started: http://localhost:${process.env.PORT}`);

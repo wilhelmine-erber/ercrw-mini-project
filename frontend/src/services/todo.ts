@@ -57,4 +57,35 @@ export async function createTodo(todo: Omit<ITodo, '_id'>){
 }
 
 // editTodo
+
+export async function editTodo(id: string, todo: Partial<ITodo>){
+    try{
+        const res = await fetch(`${BASE_URL}/todo/${id}`, {
+            method:'PUT',
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(todo),
+        })
+        const newTodo = await res.json()
+        return newTodo
+
+    }catch(error){
+        console.error(error)
+        return undefined
+    }
+
+}
+
+
 // deleteTodo
+
+export async function deleteTodo(id: string){
+    try{
+        const res = await fetch(`${BASE_URL}/todo/${id}`, {
+            method: 'DELETE'
+        })
+        return res.ok
+
+    }catch(error){
+        console.error(error)
+    }
+}
