@@ -16,9 +16,9 @@ function TodoList() {
         createTodo({title: task}).then((result) => {
             if(result){
                 setTodos((prev)=>[result, ...prev])
-               
+                setTask('')
+                // setTask('') ---> funktioniert noch nicht 2-way-binding?
             }
-            // setTask('') ---> funktioniert noch nicht 2-way-binding?
         })
     }
 

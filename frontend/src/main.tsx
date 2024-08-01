@@ -10,6 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
     <Routes>
+      <Route path='/login' element={'KOMMT NOCH'} />
       <Route path='/' index element={<App />}/>
       <Route path='/:id' element={<Todo />} />
     </Routes>

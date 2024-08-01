@@ -20,6 +20,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
   - [Verwendung](#verwendung)
     - [Funktionen](#funktionen)
     - [CRUD Operationen](#crud-operationen)
+  - [noch zu tun an Todo-App:](#noch-zu-tun-an-todo-app)
 
 
 ## Überblick
@@ -133,3 +134,10 @@ Nach dem Start der Backend- und Frontend-Server kannst du die Todo Applikation i
 - **Bearbeiten:** Ändere ein bestehendes Todo.
 - **Löschen:** Entferne ein Todo aus der Liste.
 
+
+
+## noch zu tun an Todo-App:
+- beim Eintragen der Todos wird jeder Eintrag oben in der Liste hinzugefügt - Frontend
+- beim holen der Daten aus DB werden die Einträge nach Datum aufsteigend sortiert dargestellt
+- in TodoList setTask('') ---> funktioniert noch nicht 2-way-binding?
+- 
