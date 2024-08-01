@@ -2,6 +2,7 @@ import {ITodo} from '../services/todo'
 import { TfiPencil } from 'react-icons/tfi'
 import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 interface Props extends ITodo {}
 
@@ -20,7 +21,7 @@ function TodoItem({_id, title, description, done}:Props) {
               {description}
             </p>
         </div>
-        <TfiPencil 
+        <BsThreeDotsVertical 
         className='ml-auto'
         role='button'
         tabIndex={0}
