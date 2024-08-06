@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import {connect} from './db'
 import {Todo} from './models/Todo'
+import todoRoutes from './routes/todo'
 
 dotenv.config()
 
@@ -20,15 +21,16 @@ app.use(async (req:Request, res:Response, next:NextFunction) => {
     }
 })
 
+app.use('/todo', todoRoutes)
 
-app.get('/todo', async (req:Request, res:Response, next:NextFunction)=>{
-    try{
-        const result = await Todo.find()
-        res.json(result)
-    }catch(error){
-        next(error)
-    }
-})
+// app.get('/todo', async (req:Request, res:Response, next:NextFunction)=>{
+//     try{
+//         const result = await Todo.find()
+//         res.json(result)
+//     }catch(error){
+//         next(error)
+//     }
+// })
 
 app.get('/todo/:id', async (req:Request, res:Response, next:NextFunction)=>{
     try{
