@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import {connect} from './db'
@@ -11,7 +11,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-app.use(async (req, res, next) => {
+app.use(async (req:Request, res:Response, next:NextFunction) => {
     try{
         await connect()
         next()
@@ -21,7 +21,7 @@ app.use(async (req, res, next) => {
 })
 
 
-app.get('/todo', async (req, res, next)=>{
+app.get('/todo', async (req:Request, res:Response, next:NextFunction)=>{
     try{
         const result = await Todo.find()
         res.json(result)
@@ -30,7 +30,7 @@ app.get('/todo', async (req, res, next)=>{
     }
 })
 
-app.get('/todo/:id', async (req, res, next)=>{
+app.get('/todo/:id', async (req:Request, res:Response, next:NextFunction)=>{
     try{
         const todo = await Todo.findOne({_id: req.params.id})
         res.json(todo)
@@ -41,7 +41,12 @@ app.get('/todo/:id', async (req, res, next)=>{
 })
 
 
-app.post('/todo', async (req, res, next)=>{
+app.post('/todo', async (req:Request, res:Response, next:NextFunction)=>{
+
+    if(!req.body || Object.keys(req.body).length === 0){
+        return res.status(400).json({error: 'Body content is required'})
+    }
+
     try{
         const newTodo = await Todo.create(req.body)
         res.json(newTodo)
@@ -52,7 +57,7 @@ app.post('/todo', async (req, res, next)=>{
 })
 
 
-app.put('/todo/:id', async(req, res, next)=>{
+app.put('/todo/:id', async(req:Request, res:Response, next:NextFunction)=>{
     try{
         const id = req.params.id
         const result = await Todo.findByIdAndUpdate({_id:id}, req.body, {runValidators: true, new: true})
@@ -64,7 +69,7 @@ app.put('/todo/:id', async(req, res, next)=>{
 })
 
 
-app.delete('/todo/:id', async(req, res, next) => {
+app.delete('/todo/:id', async(req:Request, res:Response, next:NextFunction) => {
     try{
         const id= req.params.id
         await Todo.deleteOne({_id:id})
@@ -75,10 +80,10 @@ app.delete('/todo/:id', async(req, res, next) => {
     }
 })
 
-// app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-//     console.error(err)
-//     res.status(500).send("error")
-//   });
+app.use((error: any, req:Request, res:Response, next:NextFunction) => {
+    console.error(error)
+    res.status(500).send("error")
+  });
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server started: http://localhost:${process.env.PORT}`);

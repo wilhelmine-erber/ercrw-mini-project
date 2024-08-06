@@ -1,9 +1,11 @@
 import {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 function DateTime() {
 
 const [currentDateTime, setCurrentDateTime] = useState(new Date())
+const navigate = useNavigate()
 
 useEffect(()=>{
     
@@ -22,7 +24,9 @@ const formattedYear = currentDateTime.getFullYear()
 
   return (      
     <div>
-        <h1 className='text-3xl font-bold'>{formattedYear}</h1>
+        <h1 
+        className='text-3xl font-bold'
+        onClick={()=>navigate('/')}>{formattedYear}</h1>
         <p className='font-thin'>{formattedDate}</p>
     </div>
   )

@@ -1,13 +1,15 @@
 import TodoList from "./components/TodoList"
-import Date from './components/Date'
+import Header from "./components/Header"
 
 
 function App() {
 
   return (
     <main className="m-10">
-      <Date />
+      <Header />
       <TodoList />
+      {/* Login hier einbinden? */}
+      {/* <Login /> */}   
     </main>
   )
 }
