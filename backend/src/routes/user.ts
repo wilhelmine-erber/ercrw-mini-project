@@ -16,7 +16,7 @@ app.route('/')
             next(error)
         }
     })
-    .post(async (req:Request, res:Response, next:NextFunction)=>{
+    .post(async (req:Request, res:Response, next:NextFunction)=>{   // register
         try {
             const sha256 = createHash('sha256')
             const newUser = req.body
@@ -37,7 +37,7 @@ app.route('/')
             // User in DB speichern
             await User.create(newUser)
 
-            res.sendStatus(201)
+            res.status(201).send('User erfolgreich registriert')
 
 
         } catch (error) {

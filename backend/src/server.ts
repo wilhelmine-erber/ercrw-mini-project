@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import {connect} from './db'
 import todoRoutes from './routes/todo'
 import userRoutes from './routes/user'
+import loginRoutes from './routes/login'
 
 dotenv.config()
 
@@ -24,6 +25,8 @@ app.use(async (req:Request, res:Response, next:NextFunction) => {
 app.use('/todo', todoRoutes)
 
 app.use('/user', userRoutes)
+
+app.use('/login', loginRoutes)
 
 
 app.use((error: any, req:Request, res:Response, next:NextFunction) => {
