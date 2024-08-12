@@ -140,4 +140,14 @@ Nach dem Start der Backend- und Frontend-Server kannst du die Todo Applikation i
 - beim Eintragen der Todos wird jeder Eintrag oben in der Liste hinzugefügt - Frontend
 - beim holen der Daten aus DB werden die Einträge nach Datum aufsteigend sortiert dargestellt
 - in TodoList setTask('') ---> funktioniert noch nicht 2-way-binding?
-- 
+
+useContext
+
+todos speichern, anzeigen
+user einloggen, registrieren ausloggen
+
+wo fange ich an?
+redux oder useContext?
+die todos so lassen wie sie sind. 
+erstmal nur userlogin und logout erstellen
+am besten in einem neuen branch
