@@ -22,6 +22,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
     - [CRUD Operationen](#crud-operationen)
   - [noch zu tun an Todo-App:](#noch-zu-tun-an-todo-app)
       - [Kategorien hinzufügen:](#kategorien-hinzufügen)
+  - [routes](#routes)
 
 
 ## Überblick
@@ -142,24 +143,28 @@ Nach dem Start der Backend- und Frontend-Server kannst du die Todo Applikation i
 - beim Eintragen der Todos wird jeder Eintrag oben in der Liste hinzugefügt - Frontend
 - beim holen der Daten aus DB werden die Einträge nach Datum aufsteigend sortiert dargestellt
 - in TodoList setTask('') ---> funktioniert noch nicht 2-way-binding?
+- registration / login
+  - nach registrierung vergleich mit DB ob user exists
+  - nach register - login?
+  - token in header mitschicken
+- useContext benutzen?
 
-useContext
-
-todos speichern, anzeigen
-user einloggen, registrieren ausloggen
-
-wo fange ich an?
-redux oder useContext?
-die todos so lassen wie sie sind. 
-erstmal nur userlogin und logout erstellen
-am besten in einem neuen branch
-
-database-entities:
-one user - many todos
 
 #### Kategorien hinzufügen:
 Tägliche Aufgaben
 Wöchentliche Aufgaben
 Monatliche Aufgaben
 
-https://blog.stackademic.com/manage-your-react-typescript-application-state-using-redux-toolkit-926d3b4abaa7
+
+## routes
+
+POST    /todo       erstellt einen neuen Todo Eintrag
+GET     /todo       zeigt alle Todos an
+GET     /todo/:id   zeigt einen Todo Eintarg an
+PUT     /todo/:id   ändern eines Todos
+DELETE  /todo/:id   löschen eines Todos
+
+GET     /user       alle User ausgeben (macht aber keinen Sinn)
+POST    /user       registrieren eines Users
+GET     /user/:id   anzeigen user profiledata
+
