@@ -1,12 +1,48 @@
-import {useState} from 'react'
+import {FormEvent, useState} from 'react'
 import Header from '../components/Header'
+import {IUser, getUsers, createUser} from '../services/user'
+import { useNavigate } from 'react-router-dom'
 
 
 function Login() {
 
+  const navigate = useNavigate()
+
   const [showRegister, setShowRegister] = useState(false)
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [userName, setUserName] = useState('')
+  const [users, setUsers] = useState<IUser[]>([])
+
+
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    // hier vergleich mit user aus db
+    // wenn user existiert -> einloggen
+
+    getUsers().then((result) => setUsers(result))
+    console.log(users)
+
+
+  }
+
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    // hier user in db speichern
+
+     createUser({userName: userName, email: email, password: password}).then((result) => {
+          if(result){
+             // neuen user speichern
+              // user einloggen
+              console.log('user registriert')
+             // weiterleitung an account / profile seite
+            navigate('/profile')
+
+          }
+      })
+    }
+
+
 
   if(showRegister){
   return (
@@ -22,13 +58,14 @@ function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email Adresse
               </label>
               <div className="mt-2">
                 <input
+                onChange={(e)=>setEmail(e.target.value)}
                   id="email"
                   name="email"
                   type="email"
@@ -52,6 +89,7 @@ function Login() {
               </div>
               <div className="mt-2">
                 <input
+                onChange={(e)=>setPassword(e.target.value)}
                   id="password"
                   name="password"
                   type="password"
@@ -64,7 +102,7 @@ function Login() {
 
             <div>
               <button
-                type="submit"
+                onClick={()=>console.log(email, password)}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 einloggen
@@ -95,13 +133,14 @@ return(
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleRegister} className="space-y-6">
           <div>
               <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
                 Name
               </label>
               <div className="mt-2">
                 <input
+                  onChange={(e)=>setUserName(e.target.value)}
                   id="username"
                   name="username"
                   type="username"
@@ -117,6 +156,7 @@ return(
               </label>
               <div className="mt-2">
                 <input
+                  onChange={(e)=>setEmail(e.target.value)}
                   id="email"
                   name="email"
                   type="email"
@@ -136,6 +176,7 @@ return(
               </div>
               <div className="mt-2">
                 <input
+                  onChange={(e)=>setPassword(e.target.value)}
                   id="password"
                   name="password"
                   type="password"
@@ -148,7 +189,7 @@ return(
 
             <div>
               <button
-                type="submit"
+                onClick={()=>console.log(name, email, password)}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                registrieren

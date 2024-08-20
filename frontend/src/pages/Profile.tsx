@@ -1,8 +1,11 @@
 import {useState, useEffect} from 'react'
-import { MdEmail } from 'react-icons/md'
-// import function getUser from services/user
+import {getUser, IUser} from '../services/user'
 
-function Profile() {
+interface Props extends IUser {}
+
+function Profile({_id, userName, email, password}:Props) {
+
+    
 
 // daten von user aus services/ user -> von getUser
 
@@ -10,8 +13,8 @@ function Profile() {
     <div>
         <h2>mein profil</h2>
         <div>
-            {/* {username} */}
-            {/* {email} */}
+            {userName}
+            {email}
         </div>
     </div>
   )

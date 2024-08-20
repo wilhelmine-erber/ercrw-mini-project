@@ -5,7 +5,7 @@ import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Todo from './pages/Todo.tsx'
 import Login from './pages/Login.tsx'
-import Register from './pages/Register.tsx'
+import Profile from './pages/Profile.tsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -15,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Route path='/' index element={<App />}/>
       <Route path='/:id' element={<Todo />} />
       <Route path='/login' element={<Login />} />
+      <Route path='/profile' element={<Profile />} />
 
     </Routes>
     </BrowserRouter>

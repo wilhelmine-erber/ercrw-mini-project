@@ -4,8 +4,8 @@ import TodoItem from './TodoItem'
 
 function TodoList() {
 
-    const [todos, setTodos] = useState<ITodo[]>([])
-    const [task, setTask] = useState('')
+    const [todos, setTodos] = useState<ITodo[]>([]) // sind daten von backend
+    const [task, setTask] = useState('')    // ist der input
     const [showSuccess, setShowSuccess] = useState(false)
 
     useEffect(()=>{
@@ -14,9 +14,9 @@ function TodoList() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        createTodo({title: task}).then((result) => {
-            if(result){
-                setTodos((prev)=>[result, ...prev])
+        createTodo({title: task}).then((result) => {    // erstelle neuen task
+            if(result){ // wenn task erstellt wurde, dann füge ihn in die liste ein
+                setTodos((prev)=>[result, ...prev]) // füge neuen task in liste ein
                 
                 // setTask('') ---> funktioniert noch nicht 2-way-binding?
             
