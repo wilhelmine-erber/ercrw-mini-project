@@ -168,3 +168,4 @@ GET     /user       alle User ausgeben (macht aber keinen Sinn)
 POST    /user       registrieren eines Users
 GET     /user/:id   anzeigen user profiledata
 
+https://excalidraw.com/

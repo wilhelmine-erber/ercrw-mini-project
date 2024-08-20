@@ -32,12 +32,8 @@ function Login() {
 
      createUser({userName: userName, email: email, password: password}).then((result) => {
           if(result){
-             // neuen user speichern
-              // user einloggen
-              console.log('user registriert')
-             // weiterleitung an account / profile seite
+            console.log('user registriert')
             navigate('/profile')
-
           }
       })
     }

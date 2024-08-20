@@ -2,10 +2,13 @@ import {useState, useEffect} from 'react'
 import {getUser, IUser} from '../services/user'
 import { useParams } from 'react-router-dom'
 
+interface RouteParams {
+  id: string | undefined
+}
 
 function Profile() {
-
-  const params = useParams()
+  
+  const params = useParams<RouteParams>()
 
   const [user, setUser] = useState<IUser>()
   const [userName, setUserName] = useState(user?.userName ?? '')

@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express'
 import {User} from '../models/User'
 import { createHash } from 'crypto'
 import validator from 'validator'
+import jwt from 'jsonwebtoken'
 
 const app = express.Router()
 
@@ -13,7 +14,7 @@ app.route('/')
            res.json(result)
         } catch (error) {
             console.error('Kein User gefunden')
-            next(error)
+            res.status(500).json({message: 'Serverfehler: Benutzer konnte nicht gefunden werden'})
         }
     })
     .post(async (req:Request, res:Response, next:NextFunction)=>{   // register
@@ -28,7 +29,9 @@ app.route('/')
                 minSymbols: 2
             })
             if(!isStrong){
-                throw new Error('weak password')
+               return res.status(400).json({
+                message: 'Das Passwort ist zu schwach. Es muss mindestens 2 Zahlen, 2 Großbuchstaben und 2 Symbole enthalten.'
+            })
             }
 
             // Passwort hashen
@@ -37,22 +40,34 @@ app.route('/')
             // User in DB speichern
             await User.create(newUser)
             // token erstellen -> wie in /login
-            // token im header zurückschicken (nicht json)
 
+            const token = jwt.sign(
+                {iat: Date.now(), userId: newUser.id},
+                process.env.JWT_SECRET!,
+                {algorithm: 'HS256', expiresIn: '1m'}
+            )
+
+            // token im header zurückschicken (nicht json)
+            res.setHeader('Authorization', token)
             res.status(201).send('User erfolgreich registriert')
 
 
         } catch (error) {
-            next(error)
+            console.error('Fehler bei der Benutzerregistrierung.', error)
+            res.status(500).json({message: 'Serverfehler: Benutzer konnte nicht registriert werden'})
         }
     })
 
 app.get('/:id', async (req:Request, res:Response, next:NextFunction)=>{
     try {
         const user = await User.findOne({_id: req.params.id})
+        if(!user){
+            return res.status(404).json({message: 'Benutzer nicht gefunden'})
+        }
         res.json(user)
     } catch (error) {
-        next(error)
+        console.error('Fehler bei der Benutzersuche.', error)
+        res.status(500).json({message: 'Serverfehler: Benutzer konnte nicht gefunden werden'})
     }
 })
 
