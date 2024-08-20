@@ -5,6 +5,8 @@ import Header from '../components/Header'
 function Login() {
 
   const [showRegister, setShowRegister] = useState(false)
+  // const [email, setEmail] = useState('')
+  // const [password, setPassword] 
 
   if(showRegister){
   return (

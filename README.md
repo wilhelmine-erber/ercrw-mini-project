@@ -21,6 +21,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
     - [Funktionen](#funktionen)
     - [CRUD Operationen](#crud-operationen)
   - [noch zu tun an Todo-App:](#noch-zu-tun-an-todo-app)
+      - [Kategorien hinzufügen:](#kategorien-hinzufügen)
 
 
 ## Überblick
@@ -42,6 +43,7 @@ Die Todo Applikation besteht aus:
   - React
   - TypeScript
   - react-router-dom
+  - redux o useContext
 
 ## Projektstruktur
 
@@ -151,3 +153,13 @@ redux oder useContext?
 die todos so lassen wie sie sind. 
 erstmal nur userlogin und logout erstellen
 am besten in einem neuen branch
+
+database-entities:
+one user - many todos
+
+#### Kategorien hinzufügen:
+Tägliche Aufgaben
+Wöchentliche Aufgaben
+Monatliche Aufgaben
+
+https://blog.stackademic.com/manage-your-react-typescript-application-state-using-redux-toolkit-926d3b4abaa7

@@ -36,6 +36,8 @@ app.route('/')
 
             // User in DB speichern
             await User.create(newUser)
+            // token erstellen -> wie in /login
+            // token im header zurückschicken (nicht json)
 
             res.status(201).send('User erfolgreich registriert')
 
