@@ -47,6 +47,15 @@ app.route('/')
         }
     })
 
+app.get('/:id', async (req:Request, res:Response, next:NextFunction)=>{
+    try {
+        const user = await User.findOne({_id: req.params.id})
+        res.json(user)
+    } catch (error) {
+        next(error)
+    }
+})
+
 export default app
 
 // 12345678ABab$$

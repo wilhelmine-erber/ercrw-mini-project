@@ -1,20 +1,33 @@
 import {useState, useEffect} from 'react'
 import {getUser, IUser} from '../services/user'
+import { useParams } from 'react-router-dom'
 
-interface Props extends IUser {}
 
-function Profile({_id, userName, email, password}:Props) {
+function Profile() {
 
-    
+  const params = useParams()
 
-// daten von user aus services/ user -> von getUser
+  const [user, setUser] = useState<IUser>()
+  const [userName, setUserName] = useState(user?.userName ?? '')
+  const [email, setEmail] = useState(user?.email ?? '')
+
+useEffect(() => {
+    getUser(params.id).then((result) => {
+        console.log(result)
+        setUser(result)
+        setUserName(result.userName)
+        setEmail(result.email)
+    })
+}, [])
+
+
 
   return (
     <div>
-        <h2>mein profil</h2>
+        <h2 className='text-2xl'>mein profil</h2>
         <div>
-            {userName}
-            {email}
+            <p>Name: {userName}</p>
+            <p>Email: {email}</p>
         </div>
     </div>
   )

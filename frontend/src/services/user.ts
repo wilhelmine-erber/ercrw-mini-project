@@ -25,9 +25,9 @@ export async function getUsers(){
 
 
 // einzelnen User finden:
-export async function getUser(id: string){
+export async function getUser(_id: string){
     try{
-        const res = await fetch(`${BASE_URL}/user/${id}`)
+        const res = await fetch(`${BASE_URL}/user/${_id}`)
         const result = await res.json()
         return result
 
