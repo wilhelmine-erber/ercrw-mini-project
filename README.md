@@ -22,7 +22,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
     - [CRUD Operationen](#crud-operationen)
   - [noch zu tun an Todo-App:](#noch-zu-tun-an-todo-app)
       - [Kategorien hinzufügen:](#kategorien-hinzufügen)
-    - [prioritäten](#prioritäten)
+    - [prioritäten der Aufgaben hinzufügen:](#prioritäten-der-aufgaben-hinzufügen)
   - [routes](#routes)
 
 
@@ -150,15 +150,21 @@ Nach dem Start der Backend- und Frontend-Server kannst du die Todo Applikation i
 - useContext benutzen?
 - login btn ausblenden im Register/Login modus
 
+user login:
+alle inputsachen stehen in der URL?
+- das ändern!
+- 
+
 
 #### Kategorien hinzufügen:
 Tägliche Aufgaben
 Wöchentliche Aufgaben
 Monatliche Aufgaben
 
-### prioritäten
+### prioritäten der Aufgaben hinzufügen:
 - wichtig
 - kann warten
+- evtl mit Farben visualisieren
 
 
 ## routes

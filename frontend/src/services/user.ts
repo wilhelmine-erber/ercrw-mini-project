@@ -10,6 +10,7 @@ export interface IUser {
 
 // hier funktionen mit fetch aus backend
 // wie finde ich den einen user der registriert / eingeloggt ist?
+// einzelnen user anhand der email finden
 
 export async function getUsers(){
     try {

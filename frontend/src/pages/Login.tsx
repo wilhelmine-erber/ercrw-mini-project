@@ -4,6 +4,7 @@ import {IUser, getUsers, createUser} from '../services/user'
 import { useNavigate } from 'react-router-dom'
 
 
+
 function Login() {
 
   const navigate = useNavigate()
@@ -15,15 +16,38 @@ function Login() {
   const [users, setUsers] = useState<IUser[]>([])
 
 
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = async(e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // hier vergleich mit user aus db
-    // wenn user existiert -> einloggen
 
-    getUsers().then((result) => setUsers(result))
-    console.log(users)
+    try {
+      const result = await getUsers()
+      setUsers(result)
+
+      // auslagern ins backend?
+      // Passwort hashen
+      // überprüfen ob user existiert
+
+      // // Passwort hashen
+      // const sha256 = createHash('sha256');
+      // const hashedPassword = sha256.update(password).digest('hex');
+
+      // // Überprüfen, ob der Benutzer existiert
+      // const user = result.find(
+      //   (user) => user.email === email && user.password === hashedPassword
+      // );
+
+      // if (!user) {
+      //   console.log('Benutzer nicht gefunden oder Passwort falsch');
+      //   return;
+      // }
 
 
+      console.log(users)
+      navigate('/profile')
+      
+    } catch (error) {
+      console.error('Fehler beim Einloggen', error)
+    }
   }
 
   const handleRegister = (e: FormEvent<HTMLFormElement>) => {
@@ -54,7 +78,7 @@ function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          <form onSubmit={handleLogin} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email Adresse
@@ -98,7 +122,6 @@ function Login() {
 
             <div>
               <button
-                onClick={()=>console.log(email, password)}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 einloggen
