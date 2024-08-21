@@ -23,7 +23,7 @@ const formattedDate = currentDateTime.toLocaleDateString('de-DE', options)
 const formattedYear = currentDateTime.getFullYear()
 
   return (      
-    <div>
+    <div className='cursor-pointer'>
         <h1 
         className='text-3xl font-bold'
         onClick={()=>navigate('/')}>{formattedYear}</h1>

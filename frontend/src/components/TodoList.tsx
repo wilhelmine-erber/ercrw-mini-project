@@ -17,13 +17,11 @@ function TodoList() {
         createTodo({title: task}).then((result) => {    // erstelle neuen task
             if(result){ // wenn task erstellt wurde, dann füge ihn in die liste ein
                 setTodos((prev)=>[result, ...prev]) // füge neuen task in liste ein
-                
-                // setTask('') ---> funktioniert noch nicht 2-way-binding?
-            
+                setTask('')
             }
         })
 
-       // status kommt von fetch
+    // status kommt von fetch
     //    console.log(createTodo.status)
     //     if(createTodo.status === 200){
     //         setShowSuccess(true)
@@ -32,12 +30,20 @@ function TodoList() {
     }
 
   return (
-    <div className='flex flex-col items-center w-full'>
-        <h1 className='text-3xl'>Todo</h1>
+    <div className='flex flex-col items-center w-full '>
+        <h1 className='text-3xl mb-8 text-gray-900'>Aufgaben für heute</h1>
+
+        <ul className='flex my-2'>
+            <li className='mx-2'>tägliche Aufgaben</li>
+            <li className='mx-2'>wöchentliche Aufgaben</li>
+            <li className='mx-2'>monatliche Aufgaben</li>
+        </ul>
+
         <form onSubmit={handleSubmit}>
             <input 
             className='p-1 border rounded-md mt-5'
             placeholder='What to do?'
+            value={task}
             onChange={(e) => setTask(e.target.value)} />
             <button
                 type="submit"

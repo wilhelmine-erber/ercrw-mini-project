@@ -22,6 +22,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
     - [CRUD Operationen](#crud-operationen)
   - [noch zu tun an Todo-App:](#noch-zu-tun-an-todo-app)
       - [Kategorien hinzufügen:](#kategorien-hinzufügen)
+    - [prioritäten](#prioritäten)
   - [routes](#routes)
 
 
@@ -142,18 +143,22 @@ Nach dem Start der Backend- und Frontend-Server kannst du die Todo Applikation i
 ## noch zu tun an Todo-App:
 - beim Eintragen der Todos wird jeder Eintrag oben in der Liste hinzugefügt - Frontend
 - beim holen der Daten aus DB werden die Einträge nach Datum aufsteigend sortiert dargestellt
-- in TodoList setTask('') ---> funktioniert noch nicht 2-way-binding?
 - registration / login
   - nach registrierung vergleich mit DB ob user exists
   - nach register - login?
   - token in header mitschicken
 - useContext benutzen?
+- login btn ausblenden im Register/Login modus
 
 
 #### Kategorien hinzufügen:
 Tägliche Aufgaben
 Wöchentliche Aufgaben
 Monatliche Aufgaben
+
+### prioritäten
+- wichtig
+- kann warten
 
 
 ## routes

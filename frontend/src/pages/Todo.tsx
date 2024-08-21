@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { TfiCheck, TfiHome, TfiTrash } from "react-icons/tfi"
 import { ITodo, getTodo, deleteTodo, editTodo } from "../services/todo"
 import classNames from "classnames"
+import Header from '../components/Header'
 
 function Todo() {
 
@@ -49,20 +50,25 @@ function Todo() {
     
 
   return (
-    <div className="flex flex-col items-center m-5">
-        <h2 className="text-4xl mb-8">Mein Todo bearbeiten</h2>
-        <TfiHome 
-            className="absolute top-5 left-5 cursor-pointer bg-gray-300 size-10 p-2"
-            onClick={()=>navigate('/')} />
+    <main className="m-10">
+        <Header />
+    <div className="flex flex-col items-center">
+        <h2 className="text-3xl mb-8 text-gray-900">Meine Aufgabe bearbeiten</h2>
+        
         <div>
             <div className="flex gap-5 justify-end">
+                <div className="bg-indigo-600 rounded-md px-2 py-1">
                 <TfiTrash 
-                    className="hover:text-red-500 cursor-pointer"
+                    className="text-white hover:text-red-500 cursor-pointer"
                     onClick={handleDelete} />
+                </div>
                
+               <div className="bg-indigo-600 rounded-md px-2 py-1">
+
                 <TfiCheck 
-                    className="hover:text-green-500 cursor-pointer"
+                    className="hover:text-green-500 cursor-pointer bg-indigo-600 text-white rounded-md"
                     onClick={handleDone} />
+               </div>
             </div>
             <h1 className={classNames('text-2xl mt-2', {'line-through':todo?.done})}>
                 {todo?.title}
@@ -75,12 +81,14 @@ function Todo() {
             defaultValue={todo?.description}
             onChange={(e)=>setDescription(e.target.value)}
          />
+         <button className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 my-2" onClick={()=>navigate('/')}>zurück</button>
         {todo?.description !== description && (
             <button 
-                className="p-1 border rounded-md mt-5"
+                className="flex justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 onClick={handleEditDescription}>speichern</button>)}
-        {isDesSave && <p className="mt-5 cursor-pointer" onClick={()=>navigate('/')}>Beschreibung gespeichert</p>}
+        {isDesSave && <p className="mt-5">Beschreibung gespeichert</p>}
     </div>
+    </main>
   )
 }
 
