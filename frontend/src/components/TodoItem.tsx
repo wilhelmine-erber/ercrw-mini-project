@@ -12,9 +12,9 @@ function TodoItem({_id, title, description, done}:Props) {
 
   return (
     <div className='p-2 border rounded-md m-1 flex items-center justify-between'>
-        <div className='mr-8'>
+        <div className='mr-8 w-full'>
             <h1 className={classNames(
-              'text-lg max-w-40 whitespace-nowrap overflow-hidden text-ellipsis',
+              'text-lg whitespace-nowrap overflow-hidden text-ellipsis',
               {'line-through':done}
               )}>{title}</h1>
             <p className='text-sm text-slate-500 font-thin whitespace-nowrap overflow-hidden text-ellipsis max-w-40'>

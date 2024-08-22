@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Route path='/login' element={<Login />} />
       {/* <Route path='/profile' element={<Profile />} /> */}
       <Route path='/profile/:id' element={<Profile />} />
-
+      <Route path='*' element={'Not found'} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,

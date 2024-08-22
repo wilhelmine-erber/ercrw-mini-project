@@ -6,7 +6,7 @@ function Header() {
     const navigate = useNavigate()
 
   return (
-    <div className='flex justify-between mb-5'>
+    <div className='flex justify-between mb-10 items-center'>
         <Date />
         <div>
         <button

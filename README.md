@@ -21,6 +21,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
     - [Funktionen](#funktionen)
     - [CRUD Operationen](#crud-operationen)
   - [noch zu tun an Todo-App:](#noch-zu-tun-an-todo-app)
+- [heute useContext hinzufügen!](#heute-usecontext-hinzufügen)
       - [Kategorien hinzufügen:](#kategorien-hinzufügen)
     - [prioritäten der Aufgaben hinzufügen:](#prioritäten-der-aufgaben-hinzufügen)
   - [routes](#routes)
@@ -155,6 +156,7 @@ alle inputsachen stehen in der URL?
 - das ändern!
 - 
 
+# heute useContext hinzufügen!
 
 #### Kategorien hinzufügen:
 Tägliche Aufgaben

@@ -31,9 +31,9 @@ function TodoList() {
 
   return (
     <div className='flex flex-col items-center w-full '>
-        <h1 className='text-3xl mb-8 text-gray-900'>Aufgaben für heute</h1>
+        <h1 className='text-3xl my-10 text-gray-900'>Aufgaben für heute</h1>
 
-        <ul className='flex my-2'>
+        <ul className='flex my-2 flex-col md:flex-row'>
             <li className='mx-2'>tägliche Aufgaben</li>
             <li className='mx-2'>wöchentliche Aufgaben</li>
             <li className='mx-2'>monatliche Aufgaben</li>
@@ -58,7 +58,7 @@ function TodoList() {
 
         {todos.length === 0 && <p className='mt-10'>No tasks created yet...</p>}
 
-        <div className='mt-10'>
+        <div className='mt-10 w-full md:w-1/2 lg:w-1/3'>
             {todos.map((todo) => (
                 <TodoItem key={todo._id} {...todo} />
             ))}
