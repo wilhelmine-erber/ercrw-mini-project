@@ -47,3 +47,6 @@ const TodoProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
         </TodoContext.Provider>
     )
 }
+export default TodoProvider
+
+// https://blog.logrocket.com/how-to-use-react-context-typescript/
