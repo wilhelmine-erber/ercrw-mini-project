@@ -30,7 +30,10 @@ const userSchema = new mongoose.Schema<IUser>({
         type: String,
         required: true,
         minlength: 8,
-    }
-})
+    },
+    
+}, 
+{timestamps: true}
+)
 
 export const User = mongoose.model<IUser>('user', userSchema)
