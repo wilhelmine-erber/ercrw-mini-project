@@ -14,25 +14,29 @@ interface TodoItemProps {
 
 function TodoItem({ done, title, description, _id }: TodoItemProps) {
   const navigate = useNavigate()
-  const { updateTodo } = useContext(TodoContext) as TodoContextType
+  const { todos, updateTodo } = useContext(TodoContext) as TodoContextType
 
   const handleCheckboxChange = () => {
-    updateTodo({
-      _id, done: !done,
-      title: '',
-      description: ''
-    })
+    const todo = todos.find(todo => todo._id === _id)
+    if (todo) {
+      updateTodo({
+        _id,
+        done: !todo.done,
+        title: todo.title,
+        description: todo.description
+      })
+    }
   }
 
   return (
     <div className='p-2 border-b my-2 flex items-center justify-between'>
       <div className='mr-8 w-full'>
         <div className='flex'>
-          <input 
-            type='checkbox' 
-            checked={done} 
-            className='mr-5' 
-            onChange={handleCheckboxChange} 
+          <input
+            type='checkbox'
+            checked={done}
+            className='mr-5'
+            onChange={handleCheckboxChange}
           />
           <h1 className={classNames(
             'text-lg whitespace-nowrap overflow-hidden text-ellipsis',
@@ -53,7 +57,6 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
 }
 
 export default TodoItem
-
 
 
 
