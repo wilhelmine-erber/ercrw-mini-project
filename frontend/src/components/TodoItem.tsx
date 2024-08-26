@@ -5,38 +5,49 @@ import { useContext } from 'react'
 import { TodoContext } from '../context/todoContext'
 import { ITodo, TodoContextType } from '../@types/todo'
 
+interface TodoItemProps {
+  done: boolean;
+  title: string;
+  description: string;
+  _id: string;
+}
 
-function TodoItem() {
-
+function TodoItem({ done, title, description, _id }: TodoItemProps) {
   const navigate = useNavigate()
+  const { updateTodo } = useContext(TodoContext) as TodoContextType
 
-  const { todos, updateTodo } = useContext(TodoContext) as TodoContextType
-
+  const handleCheckboxChange = () => {
+    updateTodo({
+      _id, done: !done,
+      title: '',
+      description: ''
+    })
+  }
 
   return (
     <div className='p-2 border-b my-2 flex items-center justify-between'>
-
-      <ul>
-        {todos.map((todo: ITodo) => (
-          <li key={todo.id} onClick={() => updateTodo(todo)}>
-
-            <h1 className={classNames(
-              'text-lg whitespace-nowrap overflow-hidden text-ellipsis',
-              { 'line-through': todo.done }
-            )}>{todo.title}</h1>
-
-            <p className='text-sm text-slate-500 font-thin whitespace-nowrap overflow-hidden text-ellipsis max-w-40'>
-              {todo.description}
-            </p>
-            <BsThreeDotsVertical
-              className='ml-auto'
-              role='button'
-              tabIndex={0}
-              onClick={() => navigate(`/${todo.id}`)} />
-          </li>
-        ))}
-      </ul>
-
+      <div className='mr-8 w-full'>
+        <div className='flex'>
+          <input 
+            type='checkbox' 
+            checked={done} 
+            className='mr-5' 
+            onChange={handleCheckboxChange} 
+          />
+          <h1 className={classNames(
+            'text-lg whitespace-nowrap overflow-hidden text-ellipsis',
+            { 'line-through': done }
+          )}>{title}</h1>
+        </div>
+        <p className='text-sm text-slate-500 font-thin whitespace-nowrap overflow-hidden text-ellipsis max-w-40'>
+          {description}
+        </p>
+      </div>
+      <BsThreeDotsVertical
+        className='ml-auto'
+        role='button'
+        tabIndex={0}
+        onClick={() => navigate(`/${_id}`)} />
     </div>
   )
 }

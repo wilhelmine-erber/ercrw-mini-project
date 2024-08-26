@@ -1,24 +1,30 @@
-import {ITodo, getTodos, createTodo} from '../services/todo'
+import { getTodos, createTodo} from '../services/todo'
 import {FormEvent, useEffect, useState, } from 'react'
 import TodoItem from './TodoItem'
+
+import {useContext} from 'react'
+import { TodoContext } from '../context/todoContext'
+import {ITodo, TodoContextType} from '../@types/todo'
+
 
 
 function TodoList() {
 
+    const {todos, updateTodo} = useContext(TodoContext) as TodoContextType
 
-    const [todos, setTodos] = useState<ITodo[]>([]) // sind daten von backend
+    // const [todos, setTodos] = useState<ITodo[]>([]) // sind daten von backend
     const [task, setTask] = useState('')    // ist der input
     const [showSuccess, setShowSuccess] = useState(false)
 
-    useEffect(()=>{
-        getTodos().then((result) => setTodos(result))
-    }, [])
+    // useEffect(()=>{
+    //     getTodos().then((result) => setTodos(result))
+    // }, [])
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         createTodo({title: task}).then((result) => {    // erstelle neuen task
             if(result){ // wenn task erstellt wurde, dann füge ihn in die liste ein
-                setTodos((prev)=>[result, ...prev]) // füge neuen task in liste ein
+                updateTodo((prev)=>[result, ...prev]) // füge neuen task in liste ein
                 setTask('')
             }
         })

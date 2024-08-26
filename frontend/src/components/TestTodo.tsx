@@ -11,7 +11,7 @@ function TestTodo() {
         Testtodo
             <ul>
                 {todos.map((todo: ITodo) => (
-                    <li key={todo.id} onClick={() => updateTodo(todo)}>
+                    <li key={todo._id} onClick={() => updateTodo(todo)}>
                         {todo.title} - {todo.done ? 'Erledigt' : 'Nicht erledigt'}
                     </li>   
                 ))}
