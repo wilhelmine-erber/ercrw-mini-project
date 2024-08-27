@@ -13,8 +13,6 @@ const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     }, []);
 
 
-    // hier kommt die Logik für das Speichern und Updaten der Todos hin
-    // das heißt meine Funktionen die einen fetch machen, um die Todos zu speichern oder zu updaten
     const saveTodo = (todo: ITodo) => {
         createTodo(todo).then((result) => {
             if (result) setTodos((prev) => [result, ...prev])
@@ -42,5 +40,3 @@ const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => 
     )
 }
 export default TodoProvider
-
-// https://blog.logrocket.com/how-to-use-react-context-typescript/

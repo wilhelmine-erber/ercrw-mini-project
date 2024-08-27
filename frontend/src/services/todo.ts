@@ -72,7 +72,6 @@ export async function editTodo(id: string, todo: Partial<ITodo>){
         console.error(error)
         return undefined
     }
-
 }
 
 
