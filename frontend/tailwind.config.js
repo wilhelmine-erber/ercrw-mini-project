@@ -13,4 +13,8 @@ export default {
     // require('@tailwindcss/forms'),
     daisyui,
   ],
+  daisyui:{
+    themes:["pastel"]
+  }
+  
 }

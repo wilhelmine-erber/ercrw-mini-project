@@ -1,11 +1,11 @@
 import classNames from 'classnames'
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { TfiTrash } from "react-icons/tfi"
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { TodoContext } from '../context/todoContext'
-import { ITodo, TodoContextType } from '../@types/todo'
+import { TodoContextType } from '../@types/todo'
 import { useNavigate, useParams } from "react-router-dom"
-import { getTodo, deleteTodo } from "../services/todo"
+import { deleteTodo } from "../services/todo"
 
 interface TodoItemProps {
   done: boolean;
@@ -34,30 +34,36 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
 
 
   const handleDelete = () => {
-    if(!params.id) return
-    deleteTodo(params.id).then(()=>navigate('/'))
-}
+    if (!params.id) return
+    deleteTodo(params.id).then(() => navigate('/'))
+  }
 
   return (
     <div className='p-2 border-b my-2 flex items-center justify-between'>
       <div className='mr-8 w-full'>
         <div className='flex'>
-          <input
-            type='checkbox'
-            checked={done}
-            className='mr-5'
-            onChange={handleCheckboxChange}
-          />
-          <h1 className={classNames(
-            'text-lg whitespace-nowrap overflow-hidden text-ellipsis',
-            { 'line-through': done }
-          )}>{title}</h1>
+
+          <div className="form-control">
+            <label className="label cursor-pointer">
+              <span className="label-text"></span>
+              <input
+                type="checkbox"
+                checked={done}
+                className='checkbox checkbox-primary mr-2'
+                onChange={handleCheckboxChange} />
+
+              <h1 className={classNames('',
+                { 'line-through': done }
+              )}>{title}</h1>
+            </label>
+          </div>
         </div>
+
         <p className='text-sm text-slate-500 font-thin whitespace-nowrap overflow-hidden text-ellipsis max-w-40'>
           {description}
         </p>
       </div>
-      <TfiTrash className=" hover:text-red-500 cursor-pointer mr-2" onClick={handleDelete} />
+      <TfiTrash className=" hover:text-primary cursor-pointer mr-2" onClick={handleDelete} />
       <BsThreeDotsVertical
         className='ml-auto'
         role='button'

@@ -30,32 +30,28 @@ function TodoList() {
 
     return (
         <div className='flex flex-col items-center w-full '>
-            <h1 className='text-3xl my-10 text-gray-900'>Aufgaben</h1>
+            <h1 className='text-3xl my-5 text-gray-900'>Aufgaben</h1>
 
-            <ul className='flex my-2 flex-col md:flex-row border rounded-lg p-3'>
+            <ul className='flex my-2 flex-col md:flex-row p-3'>
                 <li className='mx-2'>
-                    <div className="badge badge-primary badge-outline">tägliche Aufgaben</div>
+                    <div className="badge badge-primary cursor-pointer">tägliche Aufgaben</div>
                 </li>
                 <li className='mx-2'>
-                    <div className="badge badge-secondary badge-outline">wöchentliche Aufgaben</div>
+                    <div className="badge badge-secondary cursor-pointer">wöchentliche Aufgaben</div>
                 </li>
                 <li className='mx-2'>
-                    <div className="badge badge-accent badge-outline">monatliche Aufgaben</div>
+                    <div className="badge badge-accent cursor-pointer">monatliche Aufgaben</div>
                 </li>
             </ul>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='flex'>
                 <input
-                    className='p-1 border rounded-md mt-5'
+                    className='input input-bordered input-primary w-full max-w-xs mr-2'
                     placeholder='What to do?'
                     value={task}
                     onChange={(e) => setTask(e.target.value)} />
-                <button
-                    type="submit"
-                    className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mx-2"
-                >
-                    Save
-                </button>
+
+                <button type="submit" className="btn btn-primary">Save</button>
             </form>
 
             {/* {showSuccess && <p className='mt-5 text-cyan-500'>Task created successfully!</p>} */}

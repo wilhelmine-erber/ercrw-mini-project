@@ -1,8 +1,5 @@
 import Date from './Date'
 import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
-import { UserContext } from '../context/userContext'
-import { UserContextType } from '../@types/user'
 
 function Header() {
 
@@ -21,7 +18,7 @@ function Header() {
         <button
                 type="submit"
                 onClick={()=>navigate('/login')}
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="btn btn-primary"
               >
                 Sign in
                 {/* wenn user eingeloggt dann btn weg oder logout */}

@@ -10,7 +10,7 @@ function App() {
 
   return (
     <TodoProvider>
-      <main className="m-10">
+      <main className="m-10" data-theme='pastel'>
         <Header />
         <TodoList />
       </main>
