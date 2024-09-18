@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { IUser } from '../../types/IUser'
 
-const BASE_URL = `http://localhost:3000`
+const BASE_URL = `http://localhost:8080`
 
 interface ContextType {
     data: IUser | null,

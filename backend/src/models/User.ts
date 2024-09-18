@@ -1,10 +1,11 @@
 import mongoose from "mongoose"
 import validator from 'validator'
 
-interface IUser{
+export interface IUser{
     username: string
     email: string
     password: string
+    token:string
 }
 
 const userSchema = new mongoose.Schema<IUser>({
@@ -31,6 +32,9 @@ const userSchema = new mongoose.Schema<IUser>({
         required: true,
         minlength: 8,
     },
+    token:{
+        type:String
+    }
     
 }, 
 {timestamps: true}

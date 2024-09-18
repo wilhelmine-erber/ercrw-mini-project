@@ -4,14 +4,15 @@ import dotenv from 'dotenv'
 import {connect} from './db'
 import todoRoutes from './routes/todo'
 import userRoutes from './routes/user'
-import loginRoutes from './routes/login'
+import cookieParser from 'cookie-parser'
 
 dotenv.config()
 
 const app = express()
 
 app.use(express.json())
-app.use(cors())
+app.use(cookieParser())
+app.use(cors({credentials: true, origin:['http://localhost:5173']}))
 
 app.use(async (req:Request, res:Response, next:NextFunction) => {
     try{
@@ -22,12 +23,14 @@ app.use(async (req:Request, res:Response, next:NextFunction) => {
     }
 })
 
+
 app.use('/todo', todoRoutes)
 
-app.use('/register', userRoutes)
+app.use('/user', userRoutes)
 
-app.use('/login', loginRoutes)
-
+app.use('/', (req:Request, res:Response)=>{
+    res.send('hallo')
+})
 
 app.use((error: any, req:Request, res:Response, next:NextFunction) => {
     console.error(error)

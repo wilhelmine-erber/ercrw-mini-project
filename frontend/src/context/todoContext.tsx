@@ -1,6 +1,13 @@
 import { useState, createContext, useEffect } from 'react';
-import { TodoContextType } from '../@types/todo';
 import { ITodo, getTodos, createTodo, editTodo } from '../services/todo'
+
+// const BASE_URL = `http://localhost:8080`
+
+interface  TodoContextType {
+    todos: ITodo[]
+    saveTodo: (todo: ITodo) => void
+    updateTodo: (todo: ITodo) => void
+}
 
 export const TodoContext = createContext<TodoContextType | null>(null);
 
