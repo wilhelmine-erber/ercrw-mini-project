@@ -28,8 +28,10 @@ export async function getTodos(){
 export async function getTodo(id: string){
     try{
         const res = await fetch(`${BASE_URL}/todo/${id}`)
-        const result = await res.json()
-        return result
+         const result = await res.json()
+         console.log(result);
+         return result
+
 
     }catch(error){
         console.error(error)

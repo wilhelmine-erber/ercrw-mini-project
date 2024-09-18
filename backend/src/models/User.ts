@@ -2,13 +2,13 @@ import mongoose from "mongoose"
 import validator from 'validator'
 
 interface IUser{
-    userName: string
+    username: string
     email: string
     password: string
 }
 
 const userSchema = new mongoose.Schema<IUser>({
-    userName: {
+    username: {
         type: String,
         required: true,
         unique: true,

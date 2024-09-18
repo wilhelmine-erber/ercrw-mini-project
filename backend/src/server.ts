@@ -24,7 +24,7 @@ app.use(async (req:Request, res:Response, next:NextFunction) => {
 
 app.use('/todo', todoRoutes)
 
-app.use('/user', userRoutes)
+app.use('/register', userRoutes)
 
 app.use('/login', loginRoutes)
 

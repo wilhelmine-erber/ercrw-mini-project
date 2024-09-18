@@ -23,5 +23,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "../backend/src/lib"]
+  "include": ["src/**/*", "../backend/src/lib", "types/**/*"]
 }

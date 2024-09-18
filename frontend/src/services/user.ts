@@ -2,7 +2,7 @@ const BASE_URL = 'http://localhost:8080'
 
 export interface IUser {
     _id: string
-    userName: string
+    username: string
     email: string
     password: string
 }
@@ -39,18 +39,20 @@ export async function getUser(_id: string){
 }
 
 
-// createUser
+// createUser auf /register
 export async function createUser(user: Omit<IUser, '_id'>){
     try{
-        const res = await fetch(`${BASE_URL}/user`, {
+        const res = await fetch(`${BASE_URL}/register`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(user),
         })
+        
         return res
 
     }catch(error){
         console.error(error)
+        // bessere Fehlermeldung
         return undefined
     }
 }

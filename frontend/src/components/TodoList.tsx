@@ -1,7 +1,6 @@
 import { getTodos, createTodo } from '../services/todo'
 import { FormEvent, useState, } from 'react'
 import TodoItem from './TodoItem'
-
 import { useContext } from 'react'
 import { TodoContext } from '../context/todoContext'
 import { TodoContextType } from '../@types/todo'
@@ -21,16 +20,13 @@ function TodoList() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        createTodo({ title: task }).then((result) => {    // erstelle neuen task
-            if (result) { // wenn task erstellt wurde, dann füge ihn in die liste ein
-                updateTodo((prev) => [result, ...prev]) // füge neuen task in liste ein
-                setTask('')
-            }
-        })
-
+        // createTodo({ title: task }).then((result) => {    // erstelle neuen task
+        //     if (result) { // wenn task erstellt wurde, dann füge ihn in die liste ein
+        //         updateTodo((prev: any) => [result, ...prev]) // füge neuen task in liste ein
+        //         setTask('')
+        //     }
+        // })
     }
-
-    console.log(todos);
 
     return (
         <div className='flex flex-col items-center w-full '>

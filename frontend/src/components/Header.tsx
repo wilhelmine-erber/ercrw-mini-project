@@ -1,14 +1,23 @@
 import Date from './Date'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { UserContext } from '../context/userContext'
+import { UserContextType } from '../@types/user'
 
 function Header() {
 
     const navigate = useNavigate()
+    // useContext = null? wieso?
+    // const { isAuthenticated } = useContext(UserContext) as UserContextType
+
 
   return (
     <div className='flex justify-between mb-10 items-center'>
         <Date />
         <div>
+
+        {/* {isAuthenticated ? <button>login</button> : <button>logout</button>} */}
+
         <button
                 type="submit"
                 onClick={()=>navigate('/login')}
