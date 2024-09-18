@@ -1,9 +1,11 @@
 import classNames from 'classnames'
-import { useNavigate } from 'react-router-dom'
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { useContext } from 'react'
+import { TfiTrash } from "react-icons/tfi"
+import { useContext, useEffect } from 'react'
 import { TodoContext } from '../context/todoContext'
 import { ITodo, TodoContextType } from '../@types/todo'
+import { useNavigate, useParams } from "react-router-dom"
+import { getTodo, deleteTodo } from "../services/todo"
 
 interface TodoItemProps {
   done: boolean;
@@ -13,6 +15,8 @@ interface TodoItemProps {
 }
 
 function TodoItem({ done, title, description, _id }: TodoItemProps) {
+
+  const params = useParams()
   const navigate = useNavigate()
   const { todos, updateTodo } = useContext(TodoContext) as TodoContextType
 
@@ -27,6 +31,12 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
       })
     }
   }
+
+
+  const handleDelete = () => {
+    if(!params.id) return
+    deleteTodo(params.id).then(()=>navigate('/'))
+}
 
   return (
     <div className='p-2 border-b my-2 flex items-center justify-between'>
@@ -47,6 +57,7 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
           {description}
         </p>
       </div>
+      <TfiTrash className=" hover:text-red-500 cursor-pointer mr-2" onClick={handleDelete} />
       <BsThreeDotsVertical
         className='ml-auto'
         role='button'
