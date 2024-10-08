@@ -20,10 +20,8 @@ function TodoList() {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
         if (!task) return
-
-        createTodo({} as any)
+        createTodo( {title:task, description: '', done: false} )
     }
 
     return (

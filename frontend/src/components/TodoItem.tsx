@@ -18,14 +18,16 @@ interface TodoItemProps {
 function TodoItem({ done, title, description, _id }: TodoItemProps) {
 
   const navigate = useNavigate()
-  const { todos, updateTodo } = useContext(TodoContext) as TodoContextType
+  const todoContext = useContext(TodoContext) as TodoContextType | null;
+  const todos = todoContext?.todos || [];
+  const editTodo = todoContext?.editTodo;
 
 
   const handleCheckboxChange = () => {
-    const todo = todos.find(todo => todo._id === _id)
+    const todo = todos.find((todo: { _id: string; }) => todo._id === _id)
 
     if (todo) {
-      updateTodo({
+      editTodo && editTodo({
         _id,
         done: !todo.done,
         title: todo.title,
@@ -39,7 +41,7 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
     deleteTodo(_id)
       .then(() => {
         getTodos().then((result) => {
-          updateTodo(result)
+          editTodo && editTodo(result)
         })
       })
   }

@@ -57,6 +57,7 @@ export async function createTodo(todo: Omit<ITodo, '_id'>){
 }
 
 // editTodo
+// stringValue: `"{ _id: '[object Object],[object Object]' }"`,
 export async function editTodo(id: string, todo: Partial<ITodo>){
     try{
         const res = await fetch(`${BASE_URL}/todo/${id}`, {

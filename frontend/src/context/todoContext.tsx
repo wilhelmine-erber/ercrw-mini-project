@@ -48,27 +48,19 @@ export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
 
     const createTodo = async (todo: Omit<ITodo, '_id'>) => {
         setError('')
+        try {
+            const res = await fetch(`${BASE_URL}/todo`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(todo),
+            })
+            const newTodo = await res.json()
+            return newTodo
 
-        const res = await fetch(`${BASE_URL}/todo`, {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(todo),
-        })
-
-        const result = await res.json()
-
-        if (res.status === 200) {
-            setTodos(result)
-        } else if (result.errors) {
-            setError(result.errors[0].msg)
-        } else if (result.error) {
-            setError(result.error)
+        } catch (error) {
+            console.error(error)
+            return undefined
         }
-
-        setError(error)
-        console.log('createTodo', result);
-        return result
     }
 
     const editTodo = async (id: string, todo: Partial<ITodo>) => {
