@@ -5,7 +5,8 @@ import { useContext, useEffect } from 'react'
 import { TodoContext } from '../context/todoContext'
 import { TodoContextType } from '../@types/todo'
 import { useNavigate } from "react-router-dom"
-import { deleteTodo } from "../services/todo"
+import { deleteTodo, getTodos } from "../services/todo"
+
 
 interface TodoItemProps {
   done: boolean;
@@ -19,8 +20,10 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
   const navigate = useNavigate()
   const { todos, updateTodo } = useContext(TodoContext) as TodoContextType
 
+
   const handleCheckboxChange = () => {
     const todo = todos.find(todo => todo._id === _id)
+
     if (todo) {
       updateTodo({
         _id,
@@ -31,15 +34,16 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
     }
   }
 
-  useEffect(() => {
-
-  }, [todos])
-
   const handleDelete = () => {
-    console.log(_id);
-    if (!_id) return
-    deleteTodo(_id).then(() => navigate('/'))
+
+    deleteTodo(_id)
+      .then(() => {
+        getTodos().then((result) => {
+          updateTodo(result)
+        })
+      })
   }
+
 
   return (
     <div className='p-2 border-b my-2 flex items-center justify-between'>
@@ -66,7 +70,9 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
           {description}
         </p>
       </div>
-      <TfiTrash className=" hover:text-primary cursor-pointer mr-2" onClick={handleDelete} />
+      <button onClick={handleDelete}>
+        <TfiTrash className=" hover:text-primary cursor-pointer mr-2" />
+      </button>
       <BsThreeDotsVertical
         className='ml-auto'
         role='button'
@@ -77,3 +83,5 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
 }
 
 export default TodoItem
+
+// ganze Seite läd bei änderung nicht neu...

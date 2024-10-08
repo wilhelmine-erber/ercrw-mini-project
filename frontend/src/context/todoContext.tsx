@@ -1,49 +1,106 @@
-import { useState, createContext, useEffect } from 'react';
-import { ITodo, getTodos, createTodo, editTodo } from '../services/todo'
+import React, { useState, createContext, useEffect } from 'react';
+import { ITodo } from '../../types/ITodo'
 
-// const BASE_URL = `http://localhost:8080`
+const BASE_URL = `http://localhost:8080`
 
-interface  TodoContextType {
-    todos: ITodo[]
-    saveTodo: (todo: ITodo) => void
-    updateTodo: (todo: ITodo) => void
+interface TodoContextType {
+    todos: ITodo[] | null,
+    error: string,
+    setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>,
+    createTodo: (todo: Omit<ITodo, '_id'>) => Promise<ITodo | undefined>,
+    editTodo: (id: string, todo: Partial<ITodo>) => Promise<ITodo | undefined>,
+    deleteTodo: (id: string) => Promise<boolean | undefined>
 }
 
-export const TodoContext = createContext<TodoContextType | null>(null);
+export const TodoContext = createContext<TodoContextType | null>({
+    todos: null,
+    error: '',
+    setTodos: async () => null,
+    createTodo: async () => undefined,
+    editTodo: async () => undefined,
+    deleteTodo: async () => false
 
-const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+});
+
+export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
 
     const [todos, setTodos] = useState<ITodo[]>([]);
+    const [error, setError] = useState('')
+
 
     useEffect(() => {
-        getTodos().then((result) => setTodos(result))
-    }, []);
-
-
-    const saveTodo = (todo: ITodo) => {
-        createTodo(todo).then((result) => {
-            if (result) setTodos((prev) => [result, ...prev])
+        fetch(`${BASE_URL}/todo`, {
+            method: 'GET',
+            credentials: 'include'
         })
+            .then(async res => {
+                if (res.status === 200) {
+                    const result = await res.json()
+                    setTodos(result)
+                }
+            })
+            .finally(() => {
+                console.log('GET auf /todo', todos);
+            })
+    }, [])
+
+    // Funktionen vom service
+
+
+    const createTodo = async (todo: Omit<ITodo, '_id'>) => {
+        setError('')
+
+        const res = await fetch(`${BASE_URL}/todo`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(todo),
+        })
+
+        const result = await res.json()
+
+        if (res.status === 200) {
+            setTodos(result)
+        } else if (result.errors) {
+            setError(result.errors[0].msg)
+        } else if (result.error) {
+            setError(result.error)
+        }
+
+        setError(error)
+        return result
     }
 
-    const updateTodo = (todo: ITodo) => {
-        editTodo(todo._id, todo).then((result) => {
-            if (result) {
-                setTodos((prev) => {
-                    const index = prev.findIndex((t) => t._id === todo._id)
-                    if (index === -1) return prev
-                    const newTodos = [...prev]
-                    newTodos[index] = result
-                    return newTodos
-                })
-            }
-        })
+    const editTodo = async (id: string, todo: Partial<ITodo>) => {
+        try {
+            const res = await fetch(`${BASE_URL}/todo/${id}`, {
+                method: 'PUT',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(todo)
+            })
+            const newTodo = await res.json()
+            return newTodo
+
+        } catch (error) {
+            console.error(error)
+            return undefined
+        }
+    }
+
+    const deleteTodo = async (id: string) => {
+        try {
+            const res = await fetch(`${BASE_URL}/todo/${id}`, {
+                method: 'DELETE'
+            })
+            return res.ok
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
-        <TodoContext.Provider value={{ todos, saveTodo, updateTodo }}>
+        <TodoContext.Provider value={{ todos, error, setTodos, createTodo, editTodo, deleteTodo }}>
             {children}
         </TodoContext.Provider>
     )
 }
-export default TodoProvider
