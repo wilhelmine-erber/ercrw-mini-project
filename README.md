@@ -146,17 +146,9 @@ Nach dem Start der Backend- und Frontend-Server kannst du die Todo Applikation i
 - beim holen der Daten aus DB werden die Einträge nach Datum aufsteigend sortiert dargestellt
 - registration / login
   - nach registrierung vergleich mit DB ob user exists
-  - nach register - login?
-  - token in header mitschicken
-- useContext benutzen?
+  - nach register - login
 - login btn ausblenden im Register/Login modus
 
-user login:
-alle inputsachen stehen in der URL?
-- das ändern!
-- 
-
-# heute useContext hinzufügen!
 
 #### Kategorien hinzufügen:
 Tägliche Aufgaben
@@ -167,7 +159,6 @@ Monatliche Aufgaben
 - wichtig
 - kann warten
 - evtl mit Farben visualisieren
-
 
 ## routes
 
