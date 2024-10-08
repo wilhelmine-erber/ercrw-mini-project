@@ -99,7 +99,7 @@ function Login() {
                     Passwort
                   </label>
                   <div className="text-sm">
-                    <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                    <a href="#" className="font-semibold text-[#c7b8ce] hover:text-[#B5A7BB]">
                       Passwort vergessen?
                     </a>
                   </div>
@@ -119,7 +119,7 @@ function Login() {
 
               <div>
                 <button type='submit'
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="btn btn-primary"
                 >
                   einloggen
                 </button>
@@ -128,7 +128,7 @@ function Login() {
 
             <p className="mt-10 text-center text-sm text-gray-500">
               Noch kein Account?{' '}
-              <a onClick={() => setShowRegister(false)} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer">
+              <a onClick={() => setShowRegister(false)} className="font-semibold leading-6 text-[#c7b8ce] hover:text-[#B5A7BB] cursor-pointer">
                 hier registrieren
               </a>
             </p>
@@ -205,7 +205,7 @@ function Login() {
             <div>
               <button
                 onClick={() => console.log(userName, email, password)}
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="btn btn-primary"
               >
                 registrieren
               </button>
@@ -214,7 +214,7 @@ function Login() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Schon registriert?{' '}
-            <a onClick={() => setShowRegister(true)} className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500 cursor-pointer">
+            <a onClick={() => setShowRegister(true)} className="font-semibold leading-6 text-[#c7b8ce] hover:text-[#B5A7BB] cursor-pointer">
               zum Einloggen
             </a>
           </p>

@@ -7,7 +7,7 @@ import Todo from './pages/Todo.tsx'
 import Login from './pages/Login.tsx'
 import Profile from './pages/Profile.tsx'
 import ProtectedRoute from './components/ProtectedRoute.tsx'
-import UserProvider from './context/userContext.tsx'
+import {UserProvider} from './context/userContext.tsx'
 
 const isAuthenticated = false
 

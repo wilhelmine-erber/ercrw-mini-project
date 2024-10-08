@@ -36,6 +36,7 @@ export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
             .then(async res => {
                 if (res.status === 200) {
                     const result = await res.json()
+                    // hier wird todos gefüllt
                     setTodos(result)
                 }
             })
@@ -43,8 +44,6 @@ export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
                 console.log('GET auf /todo', todos);
             })
     }, [])
-
-    // Funktionen vom service
 
 
     const createTodo = async (todo: Omit<ITodo, '_id'>) => {
@@ -68,6 +67,7 @@ export const TodoProvider = ({ children }: { children: React.ReactNode }) => {
         }
 
         setError(error)
+        console.log('createTodo', result);
         return result
     }
 

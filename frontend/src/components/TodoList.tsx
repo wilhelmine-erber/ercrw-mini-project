@@ -1,4 +1,4 @@
-import { getTodos, createTodo, editTodo } from '../services/todo'
+// import { getTodos, createTodo, editTodo } from '../services/todo'
 import { FormEvent, useState, } from 'react'
 import TodoItem from './TodoItem'
 import { useContext } from 'react'
@@ -8,18 +8,22 @@ import { TodoContextType } from '../@types/todo'
 
 function TodoList() {
 
-    const { todos, updateTodo, saveTodo, setTodos } = useContext(TodoContext) as TodoContextType
+    const todoContext = useContext(TodoContext) as TodoContextType | null;
+
+    if (!todoContext) {
+        return <div>Loading...</div>;
+    }
+
+    const { todos, createTodo } = todoContext;
 
     const [task, setTask] = useState('')    // ist der input
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        // provider
-        saveTodo(
-            // services
-            createTodo()
-        )
+        if (!task) return
+
+        createTodo({} as any)
     }
 
     return (
