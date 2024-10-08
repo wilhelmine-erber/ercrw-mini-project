@@ -17,6 +17,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
     - [Starten des Servers](#starten-des-servers)
   - [Frontend](#frontend)
     - [Starten der Anwendung](#starten-der-anwendung)
+    - [Alternativ Anwendung im Hautordner starten](#alternativ-anwendung-im-hautordner-starten)
   - [Verwendung](#verwendung)
     - [Funktionen](#funktionen)
     - [CRUD Operationen](#crud-operationen)
@@ -121,6 +122,14 @@ Das Frontend verwendet React mit TypeScript und `react-router-dom` für die Navi
    cd frontend
    npm run dev
    ```
+
+### Alternativ Anwendung im Hautordner starten
+
+   ```bash
+   cd ercrw-mini-project
+   npm run dev
+   ```
+
 
 Die Anwendung sollte jetzt auf `http://localhost:5173` laufen.
 
