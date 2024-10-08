@@ -146,17 +146,9 @@ Nach dem Start der Backend- und Frontend-Server kannst du die Todo Applikation i
 - beim holen der Daten aus DB werden die Einträge nach Datum aufsteigend sortiert dargestellt
 - registration / login
   - nach registrierung vergleich mit DB ob user exists
-  - nach register - login?
-  - token in header mitschicken
-- useContext benutzen?
+  - nach register - login
 - login btn ausblenden im Register/Login modus
 
-user login:
-alle inputsachen stehen in der URL?
-- das ändern!
-- 
-
-# heute useContext hinzufügen!
 
 #### Kategorien hinzufügen:
 Tägliche Aufgaben
@@ -168,17 +160,18 @@ Monatliche Aufgaben
 - kann warten
 - evtl mit Farben visualisieren
 
-
 ## routes
 
-POST    /todo       erstellt einen neuen Todo Eintrag
-GET     /todo       zeigt alle Todos an
-GET     /todo/:id   zeigt einen Todo Eintarg an
-PUT     /todo/:id   ändern eines Todos
-DELETE  /todo/:id   löschen eines Todos
-
-GET     /user       alle User ausgeben (macht aber keinen Sinn)
-POST    /user       registrieren eines Users
-GET     /user/:id   anzeigen user profiledata
+| method | route     | do |
+| ------ | --------- | ----------------------------------- |
+| POST   | /todo     |  erstellt einen neuen Todo Eintrag |
+| GET    | /todo     |  zeigt alle Todos an |
+| GET    | /todo/:id |  zeigt einen Todo Eintarg an |
+| PUT    | /todo/:id |  ändern eines Todos |
+| DELETE | /todo/:id |  löschen eines Todos |
+| ------ | --------- | --------------------------------- |
+| GET    | /user     |  alle User ausgeben (macht aber keinen Sinn) |
+| POST   | /user     |  registrieren eines Users |
+| GET    | /user/:id |  anzeigen user profiledata |
 
 https://excalidraw.com/
