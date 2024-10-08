@@ -163,13 +163,13 @@ Monatliche Aufgaben
 ## routes
 
 | method | route     | do |
-----------------------------------------------------------
+| ------ | --------- | ----------------------------------- |
 | POST   | /todo     |  erstellt einen neuen Todo Eintrag |
 | GET    | /todo     |  zeigt alle Todos an |
 | GET    | /todo/:id |  zeigt einen Todo Eintarg an |
 | PUT    | /todo/:id |  ändern eines Todos |
 | DELETE | /todo/:id |  löschen eines Todos |
-----------------------------------------------------------
+| ------ | --------- | --------------------------------- |
 | GET    | /user     |  alle User ausgeben (macht aber keinen Sinn) |
 | POST   | /user     |  registrieren eines Users |
 | GET    | /user/:id |  anzeigen user profiledata |
