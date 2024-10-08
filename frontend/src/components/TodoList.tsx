@@ -1,36 +1,34 @@
-import { getTodos, createTodo } from '../services/todo'
+// import { getTodos, createTodo, editTodo } from '../services/todo'
 import { FormEvent, useState, } from 'react'
 import TodoItem from './TodoItem'
 import { useContext } from 'react'
 import { TodoContext } from '../context/todoContext'
 import { TodoContextType } from '../@types/todo'
 
-// beim check eines todos wird das nicht im context gespeichert
-// das muss noch gemacht werden
-// funktionen zum update noch hinzufügen
-// funktionen zum löschen noch hinzufügen
-
-
 
 function TodoList() {
 
-    const { todos, updateTodo } = useContext(TodoContext) as TodoContextType
+    const todoContext = useContext(TodoContext) as TodoContextType | null;
+
+    if (!todoContext) {
+        return <div>Loading...</div>;
+    }
+
+    const { todos, createTodo } = todoContext;
 
     const [task, setTask] = useState('')    // ist der input
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        // createTodo({ title: task }).then((result) => {    // erstelle neuen task
-        //     if (result) { // wenn task erstellt wurde, dann füge ihn in die liste ein
-        //         updateTodo((prev: any) => [result, ...prev]) // füge neuen task in liste ein
-        //         setTask('')
-        //     }
-        // })
+
+        if (!task) return
+
+        createTodo({} as any)
     }
 
     return (
         <div className='flex flex-col items-center w-full '>
-            <h1 className='text-3xl my-5 text-gray-900'>Aufgaben</h1>
+            <h1 className='text-3xl my-5 text-gray-900'>Produktivität steigern mit deiner Prioitätsliste</h1>
 
             <ul className='flex my-2 flex-col md:flex-row p-3'>
                 <li className='mx-2'>

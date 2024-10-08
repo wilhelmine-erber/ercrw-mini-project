@@ -8,8 +8,8 @@ export interface ITodo {
 }
 
 // hier Funktionen mit fetch aus backend
-// getTodos
 
+// getTodos
 export async function getTodos(){
     try{
         const res = await fetch(`${BASE_URL}/todo`)
@@ -24,7 +24,6 @@ export async function getTodos(){
 
 
 // getTodo
-
 export async function getTodo(id: string){
     try{
         const res = await fetch(`${BASE_URL}/todo/${id}`)
@@ -41,7 +40,6 @@ export async function getTodo(id: string){
 
 
 // createTodo
-
 export async function createTodo(todo: Omit<ITodo, '_id'>){
     try{
         const res = await fetch(`${BASE_URL}/todo`, {
@@ -59,7 +57,6 @@ export async function createTodo(todo: Omit<ITodo, '_id'>){
 }
 
 // editTodo
-
 export async function editTodo(id: string, todo: Partial<ITodo>){
     try{
         const res = await fetch(`${BASE_URL}/todo/${id}`, {
@@ -78,7 +75,6 @@ export async function editTodo(id: string, todo: Partial<ITodo>){
 
 
 // deleteTodo
-
 export async function deleteTodo(id: string){
     try{
         const res = await fetch(`${BASE_URL}/todo/${id}`, {

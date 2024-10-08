@@ -150,5 +150,3 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default UserProvider
-// todo: userContext in app.tsx einbinden!
