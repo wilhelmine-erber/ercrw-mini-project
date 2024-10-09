@@ -1,7 +1,6 @@
 # Fullstack Todo Applikation
 
-Dies ist ein Beispiel einer Fullstack Todo Applikation. 
-Die App ermöglicht es, Aufgaben zu erstellen, zu bearbeiten und zu löschen. 
+Dies ist meine Fullstack Applikation mit der es möglich ist Aufgaben zu erstellen, zu bearbeiten und zu löschen.
 Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschrieben sind.
 
 ![App-vorschau](./assets/app-vorschau.png)
@@ -33,7 +32,7 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
 
 Die Todo Applikation besteht aus:
 - Einem Node.js Express Backend, das mit TypeScript geschrieben wurde und MongoDB als Datenbank verwendet.
-- Einem React Frontend, das in TypeScript geschrieben ist und `react-router-dom` für die Navigation zwischen Seiten nutzt.
+- Einem React Frontend, das in TypeScript geschrieben ist, `react-router-dom` für die Navigation zwischen Seiten nutzt und `useContext` zur Verwaltung von states.
 
 ## Technologien
 
@@ -48,7 +47,7 @@ Die Todo Applikation besteht aus:
   - React
   - TypeScript
   - react-router-dom
-  - redux o useContext
+  - useContext
 
 ## Projektstruktur
 
@@ -56,9 +55,22 @@ Die Todo Applikation besteht aus:
 ercrw-mini-project/
 ├── backend/
 │   ├── src/
+|   |   |── controllers/
+|   |   |   ├──user.ts
+|   |   |── lib/
+|   |   |   ├──middlewares/
+|   |   |   |   |──auth.ts
+|   |   |   |   |──validator.ts
+|   |   |   ├──validators/
+|   |   |   |   |──user.ts
 │   │   ├── models/
 |   |   |   ├──Todo.ts
+|   |   |   ├──User.ts
+|   |   |── routes/
+|   |   |   ├──todo.ts
+|   |   |   ├──user.ts
 │   │   ├── db.ts
+│   │   ├── middleware.ts
 │   │   ├── server.ts
 │   └── package.json
 ├── frontend/
