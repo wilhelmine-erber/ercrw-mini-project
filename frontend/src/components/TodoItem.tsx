@@ -29,14 +29,8 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
   const handleCheckboxChange = () => {
     const todo = todos.find((todo: { _id: string; }) => todo._id === _id)
 
-    if (todo) {
-      editTodo && editTodo({
-        _id,
-        done: !todo.done,
-        title: todo.title,
-        description: todo.description
-      })
-    }
+    // editTodo && editTodo(_id, { done: !done })
+    setTodos && setTodos(todos.map(todo => todo._id === _id ? { ...todo, done: !done } : todo))
   }
 
   const handleDelete = () => {
