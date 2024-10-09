@@ -1,9 +1,11 @@
 # Fullstack Todo Applikation
 
 Dies ist ein Beispiel einer Fullstack Todo Applikation. 
-Die App ermöglicht es, Todos zu erstellen, zu bearbeiten und zu löschen. 
+Die App ermöglicht es, Aufgaben zu erstellen, zu bearbeiten und zu löschen. 
 Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschrieben sind.
 
+![App-vorschau](./assets/app-vorschau.png)
+![App-vorschau-responsive](./assets/app-vorschau-responsiv.png)
 
 ## Inhaltsverzeichnis
 
@@ -22,7 +24,6 @@ Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschr
     - [Funktionen](#funktionen)
     - [CRUD Operationen](#crud-operationen)
   - [noch zu tun an Todo-App:](#noch-zu-tun-an-todo-app)
-- [heute useContext hinzufügen!](#heute-usecontext-hinzufügen)
       - [Kategorien hinzufügen:](#kategorien-hinzufügen)
     - [prioritäten der Aufgaben hinzufügen:](#prioritäten-der-aufgaben-hinzufügen)
   - [routes](#routes)
