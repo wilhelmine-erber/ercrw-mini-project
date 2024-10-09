@@ -5,7 +5,7 @@ import { useContext, useEffect } from 'react'
 import { TodoContext } from '../context/todoContext'
 import { TodoContextType } from '../@types/todo'
 import { useNavigate } from "react-router-dom"
-import { deleteTodo, getTodos } from "../services/todo"
+// import { deleteTodo, getTodos } from "../services/todo"
 
 
 interface TodoItemProps {
@@ -19,6 +19,9 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
 
   const navigate = useNavigate()
   const todoContext = useContext(TodoContext) as TodoContextType | null;
+
+  const { deleteTodo, setTodos } = todoContext || {};
+
   const todos = todoContext?.todos || [];
   const editTodo = todoContext?.editTodo;
 
@@ -38,12 +41,12 @@ function TodoItem({ done, title, description, _id }: TodoItemProps) {
 
   const handleDelete = () => {
 
-    deleteTodo(_id)
-      .then(() => {
-        getTodos().then((result) => {
-          editTodo && editTodo(result)
-        })
-      })
+    // lösche todo
+    deleteTodo && deleteTodo(_id)
+
+    // stelle alle todos wieder her, die nicht gelöscht wurden
+     const newTodos = todos.filter(todo => todo._id !== _id)
+     setTodos && setTodos(newTodos)
   }
 
 

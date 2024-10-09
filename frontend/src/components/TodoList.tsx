@@ -14,14 +14,18 @@ function TodoList() {
         return <div>Loading...</div>;
     }
 
-    const { todos, createTodo } = todoContext;
+    const { todos, setTodos, createTodo } = todoContext;
 
     const [task, setTask] = useState('')    // ist der input
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        console.log('klick save', task);
         if (!task) return
-        createTodo( {title:task, description: '', done: false} )
+        createTodo({ title: task, description: '', done: false })
+        // hier muss der state mit dem neuen task gefüllt werden
+        setTodos([...todos, { _id: new Date().toISOString(), title: task, description: '', done: false }])
+        setTask('')
     }
 
     return (
@@ -55,6 +59,7 @@ function TodoList() {
 
             {todos.length === 0 && <p className='mt-10'>No tasks created yet...</p>}
 
+            {/* Todo Liste mit check && delete && edit */}
             <div className='mt-10 w-full md:w-1/2 lg:w-1/3'>
                 {todos.map((todo) => (
                     <TodoItem key={todo._id} {...todo} />
