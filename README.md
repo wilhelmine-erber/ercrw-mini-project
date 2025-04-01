@@ -3,9 +3,6 @@
 Dies ist meine Fullstack Applikation mit der es möglich ist Aufgaben zu erstellen, zu bearbeiten und zu löschen.
 Sie besteht aus einem Backend und einem Frontend, die beide in TypeScript geschrieben sind.
 
-![App-vorschau](./assets/app-vorschau.png)
-![App-vorschau-responsive](./assets/app-vorschau-responsiv.png)
-
 ## Inhaltsverzeichnis
 
 - [Fullstack Todo Applikation](#fullstack-todo-applikation)
@@ -125,7 +122,7 @@ Der Server sollte jetzt auf `http://localhost:8080` laufen.
 
 ## Frontend
 
-Das Frontend verwendet React mit TypeScript und `react-router-dom` für die Navigation. Für das Styling wird Tailwind verwendet.
+Das Frontend verwendet React mit TypeScript und `react-router-dom` für die Navigation. Für das Styling wird Tailwind und DaisyUi verwendet.
 
 ### Starten der Anwendung
 
