@@ -30,7 +30,7 @@ function TodoList() {
 
     return (
         <div className='flex flex-col items-center w-full '>
-            <h1 className='text-3xl my-5 text-gray-900'>Produktivität steigern mit deiner Prioitätsliste</h1>
+            <h1 className='text-3xl my-5 text-gray-900'>Produktivität steigern mit deiner Prioritätsliste</h1>
 
             <ul className='flex my-2 flex-col md:flex-row p-3'>
                 <li className='mx-2'>
